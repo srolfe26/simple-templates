@@ -11,13 +11,35 @@
 
     <style type="text/css">
         html, body {
-            background-color:#dedede;
             margin:0;
             padding:0;
+            height:100%;
         }
 
+        html * {
+            -moz-box-sizing:    border-box !important;
+            -webkit-box-sizing: border-box !important;
+            box-sizing:         border-box !important;
+        }
+
+        body { 
+            margin:0; 
+            padding:0;
+            background-color:#dedede;
+        }
+
+        /*Opera Fix*/
+        body:before {
+            content:"";
+            height:100%;
+            float:left;
+            width:0;
+            margin-top:-32767px;/
+        }
+
+        
+
         .site-header {
-            border-bottom:1px solid #999;
             position: fixed;
             z-index:20;
             width:100%;
@@ -38,35 +60,54 @@
 
         .site-footer {
             background-color: #444;
-            align-self:flex-end;
             width:100%;
-            height:100px;
+            height:300px; 
+            max-height:200px; 
+            margin-top: -200px;
+            padding:0.5em 1em;
         }
+
+        .hero::before {
+            content:"hero";
+        }
+        .hero {
+            width:100%;
+            height:50vh;
+            background-color: #ccc;
+        }
+
+        .site-header, .hero {
+            border-bottom:1px solid #999;
+        }
+
+        #wrap { min-height: 100%; }
     </style>
   </head>
   <body>
     <!--[if lt IE 8]>
         <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
+    <div id="wrap">
+        <header class="site-header">
+          <nav>
+            <ul class="responsive-menu">
+              <li>Menu 1</li>
+              <li>Menu 2</li>
+              <li>Menu 3</li>
+              <li>Menu 4</li>
+              <li>Menu 5</li>
+            </ul>
+          </nav>
+        </header>
 
-    <header class="site-header">
-      <nav>
-        <ul class="responsive-menu">
-          <li>Menu 1</li>
-          <li>Menu 2</li>
-          <li>Menu 3</li>
-          <li>Menu 4</li>
-          <li>Menu 5</li>
-        </ul>
-      </nav>
-    </header>
-
-    <section class="Steve Projec">
-
-    </section>
-
+        <section class="page-content">
+            <section class="hero">
+                
+            </section>
+        </section>
+    </div>
     <footer class="site-footer">
-    asdf
+        <p>Footer</p>
     </footer>
 
     <link rel="stylesheet" href="assets/css/normalize.min.css">
