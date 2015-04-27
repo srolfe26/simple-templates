@@ -18,7 +18,7 @@ $(function(){
 
     // On mobile, the menu will toggle open and closed via
     // a touch method rather than on hover
-    $(document).on('click touchstart','#menu-toggle',function(){
+    $(document).on('click','#menu-toggle',function(){
         var wrapperFooter = $('.page-wrap, .site-footer'),
             menu = $('.slide-holder');
 

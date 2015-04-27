@@ -9,7 +9,7 @@
     <meta name="canonical" content="http://srolfe26.github.io/simple-templates/sticky-header-hero">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <style type="text/css">
         html, body {
             margin:0;
@@ -26,16 +26,12 @@
         body { 
             margin:0; 
             padding:0;
-            background-color:#dedede;
+            background-color:#dfdfdf;
         }
 
-        /*Opera Fix*/
-        body:before {
-            content:"";
-            height:100%;
-            float:left;
-            width:0;
-            margin-top:-32767px;
+        .site-header, .site-footer, .page-wrap {
+          -webkit-transition: all 0.5s;
+          transition: all 0.5s;
         }
 
         .site-header {
@@ -56,22 +52,55 @@
           top: 0;
           z-index: 2;
           left: -225px;
-          padding-bottom: 9999px;        }
+          padding-bottom: 9999px;
+        }
 
         .responsive-menu {
           list-style: none;
+          padding: 0;
+          margin: 0;
         }
 
         .responsive-menu li {
             list-style: none;
         }
 
-        .menu-toggle {
+        .responsive-menu a {
+          color:#ccc;
+          display: block;
+          padding: 0.33em 0.5em;
+          border-bottom:1px solid #555;
+        }
 
+        .responsive-menu ul {
+          padding: 0;
+          margin: 0;
+        }
+
+        .responsive-menu ul a {
+          padding: 0.33em 0.33em 0.33em 1.5em;
+          margin: 0;
+        }
+
+        .menu-toggle {
+          line-height: 55px;
+          text-decoration: none;
+          color: #333;
+          padding:0 1em;
+        }
+
+        .no-select {
+          -webkit-touch-callout: none;
+          -webkit-user-select: none;
+          -khtml-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
         }
 
         .site-footer {
             background-color: #333;
+            color:#ddd;
             width:100%;
             padding:0.5em 1em;
         }
@@ -94,8 +123,14 @@
             border-bottom:1px solid #999;
         }
 
+        .content {
+          padding: 0 0.5em;
+        }
+
         .page-wrap {
           min-height: 100%;
+          width: 100%;
+          min-width: 100%;
           /* equal to footer height */
           margin-bottom: -100px; 
         }
@@ -113,12 +148,74 @@
         @media only screen and (min-width: 800px){ 
           .menu-toggle { display: none; }
 
-          .responsive-menu {
-            list-style: none;
-            display: flex;
-            align-items: center;
-            width: 50%;
-            justify-content: space-around;
+          .slide-holder {
+            background-color: transparent;
+            width:auto;
+            position: static;
+            left:auto;
+            padding: 0.5em;
+          }
+
+          .responsive-menu li {
+            float: left;
+            position: relative;
+          }
+
+          .responsive-menu a {
+            color:#555;
+            display: inline-block;
+            padding: 0.33em 0.5em;
+            border-bottom: 0;
+            text-decoration: none;
+          }
+
+          .responsive-menu ul {
+            display:block;
+            position: absolute;
+            z-index: 21;
+            left:0;
+            top:100%;
+            height:0;
+            overflow: hidden;
+            -webkit-transition: all 0.25s;
+            transition: all 0.25s;
+          }
+
+          .responsive-menu > li:hover > a, 
+          .responsive-menu> li:hover ul {
+            background-color: #eee;
+          }
+
+          .responsive-menu > li:hover ul {
+            height:auto;
+          }
+
+          .responsive-menu ul a {
+            padding: 0.25em 0.5em;
+            width: 150px;
+          }
+
+          .responsive-menu ul + a::after {
+            font: normal normal normal 14px/1 FontAwesome;
+            content: " \f107";
+          }
+
+          .responsive-menu ul a {
+            padding: 0.33em 0.33em 0.33em 1.5em;
+            margin: 0;
+          }
+          .responsive-menu ul a:hover {
+            border-bottom: 1px dashed #333;
+            background-color: #fff;
+          }
+          .responsive-menu ul li:last-child a:hover {
+            border-bottom: 0;
+          }
+
+          .content {
+            padding: 0;
+            max-width: 960px;
+            margin: 0 auto;
           }
         }
     </style>
@@ -130,16 +227,36 @@
     <div class="page-wrap">
         <div class="sticky-alias"></div>
         <header class="site-header sticky-header">
-          <a class="menu-toggle" id="menu-toggle" href="javascript:void(0);">Menu</a>
-          <nav class="slide-holder">
-            <ul class="responsive-menu">
-              <li>Menu 1</li>
-              <li>Menu 2</li>
-              <li>Menu 3</li>
-              <li>Menu 4</li>
-              <li>Menu 5</li>
-            </ul>
-          </nav>
+          <a unselectable="on" class="menu-toggle no-select" id="menu-toggle" href="javascript:void(0);">
+            <i class="fa fa-bars"></i>
+            Menu
+          </a>
+
+          <div class="content">
+            <nav class="slide-holder">
+              <ul class="responsive-menu">
+                <li>
+                  <a href="#">Menu 1</a>
+                </li>
+                <li>
+                  <ul>
+                    <li><a href="#">Sub 1</a></li>
+                    <li><a href="#">Sub 2</a></li>
+                  </ul>
+                  <a href="#">Menu 2</a>
+                </li>
+                <li>
+                  <a href="#">Menu 3</a>
+                </li>
+                <li>
+                  <a href="#">Menu 4</a>
+                </li>
+                <li>
+                  <a href="#">Menu 5</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
         </header>
 
         <section class="page-content">
@@ -149,19 +266,23 @@
         </section>
 
         <section>
-          <header>
-            <h1>Heading 1</h1>
-            <h2>Heading 2</h2>
-            <h3>Heading 3</h3>
-            <h4>Heading 4</h4>
-            <h5>Heading 5</h5>
-            <h6>Heading 6</h6>
-          </header>
-          <p>Some text</p>
+          <div class="content">
+            <header>
+              <h1>Heading 1</h1>
+              <h2>Heading 2</h2>
+              <h3>Heading 3</h3>
+              <h4>Heading 4</h4>
+              <h5>Heading 5</h5>
+              <h6>Heading 6</h6>
+            </header>
+            <p>Some text</p>
+          </div>
         </section>
     </div>
     <footer class="site-footer">
-        <p>Footer</p>
+        <div class="content">
+            <p>Footer</p>
+          </div>
     </footer>
 
     <link rel="stylesheet" href="assets/css/normalize.min.css">
