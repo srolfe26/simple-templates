@@ -9,7 +9,8 @@
     <meta name="canonical" content="http://srolfe26.github.io/simple-templates/sticky-header-hero">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <!-- These styles are included here to expedite the initial rendering of the page -->
     <style type="text/css">
         html, body {
             margin:0;
@@ -34,6 +35,24 @@
           transition: all 0.5s;
         }
 
+
+        /* equally opposite of .slide-holder left */
+        .page-wrap.menu-open { margin-left:225px; }
+        .page-wrap.menu-open .site-header { left:225px; }
+        .site-footer.menu-open { margin-left:225px; }
+
+        .page-wrap {
+          min-height: 100%;
+          width: 100%;
+          min-width: 100%;
+          /* equal to site-footer height */
+          margin-bottom: -100px; 
+        }
+        .page-wrap:after {
+          content: "";
+          display: block;
+        }
+
         .site-header {
             position: fixed;
             z-index:20;
@@ -44,6 +63,16 @@
             height:50px;
         }
 
+        .no-select {
+          -webkit-touch-callout: none;
+          -webkit-user-select: none;
+          -khtml-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+        }
+
+        /********************* Slide Menu Styles ********************/
         .slide-holder {
           background-color: #444;
           color:#ddd;
@@ -65,16 +94,16 @@
             list-style: none;
         }
 
+        .responsive-menu ul {
+          padding: 0;
+          margin: 0;
+        }
+
         .responsive-menu a {
           color:#ccc;
           display: block;
           padding: 0.33em 0.5em;
           border-bottom:1px solid #555;
-        }
-
-        .responsive-menu ul {
-          padding: 0;
-          margin: 0;
         }
 
         .responsive-menu ul a {
@@ -89,15 +118,6 @@
           padding:0 1em;
         }
 
-        .no-select {
-          -webkit-touch-callout: none;
-          -webkit-user-select: none;
-          -khtml-user-select: none;
-          -moz-user-select: none;
-          -ms-user-select: none;
-          user-select: none;
-        }
-
         .site-footer {
             background-color: #333;
             color:#ddd;
@@ -105,6 +125,8 @@
             padding:0.5em 1em;
         }
 
+
+        /************************ Hero Styles ***********************/
         .hero::before {
             content:"Hero";
             color:#777;
@@ -123,27 +145,15 @@
             border-bottom:1px solid #999;
         }
 
+        /********************** General Content *********************/
         .content {
           padding: 0 0.5em;
         }
 
-        .page-wrap {
-          min-height: 100%;
-          width: 100%;
-          min-width: 100%;
-          /* equal to footer height */
-          margin-bottom: -100px; 
-        }
-        .page-wrap:after {
-          content: "";
-          display: block;
-        }
+        /************************** Footer **************************/
         .site-footer, .page-wrap:after {
           height: 100px; 
         }
-        .page-wrap.menu-open { margin-left:225px; }
-        .page-wrap.menu-open .site-header { left:225px; }
-        .site-footer.menu-open { margin-left:225px; }
 
         @media only screen and (min-width: 800px){ 
           .menu-toggle { display: none; }
