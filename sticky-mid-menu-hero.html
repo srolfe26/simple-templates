@@ -29,7 +29,7 @@
             background-color:#dfdfdf;
         }
 
-        .site-header, .site-footer, .page-wrap {
+        .site-header, .site-footer, .page-wrap, .menu-toggle {
           -webkit-transition: all 0.5s;
           transition: all 0.5s;
         }
@@ -39,6 +39,7 @@
         .page-wrap.menu-open { margin-left:225px; }
         .page-wrap.menu-open .site-header { left:225px; }
         .site-footer.menu-open { margin-left:225px; }
+        .menu-open .menu-toggle { left: 225px; }
 
         .page-wrap {
           min-height: 100%;
@@ -53,9 +54,9 @@
         }
 
         .site-header {
-          width:100%;
-          background-color: #fff;
-          height:50px;
+            width:100%;
+            background-color: #fff;
+            height:50px;
         }
 
         .header-fixed {
@@ -116,8 +117,18 @@
         .menu-toggle {
           line-height: 55px;
           text-decoration: none;
-          color: #333;
           padding:0 1em;
+          position: fixed;
+          top: 0;
+          left: 0;
+          color: #fff;
+          z-index: 21;
+          text-shadow: 0 0 3px #000;
+        }
+
+        .header-fixed .menu-toggle { 
+          color:#333; 
+          text-shadow: 0 0 3px #eee;
         }
 
         /************************ Hero Styles ***********************/
@@ -237,8 +248,12 @@
         <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
     <div class="page-wrap">
+        <section class="hero">
+                
+        </section>
+
         <div class="sticky-alias"></div>
-        <header class="site-header sticky-header">
+        <div class="site-header sticky-header">
           <a unselectable="on" class="menu-toggle no-select" id="menu-toggle" href="javascript:void(0);">
             <i class="fa fa-bars"></i>
             Menu
@@ -269,11 +284,7 @@
               </ul>
             </nav>
           </div>
-        </header>
-
-        <section class="hero">
-                
-        </section>
+        </div>
 
         <section>
           <div class="content">
@@ -286,6 +297,11 @@
               <h6>Heading 6</h6>
             </header>
             <p>Some text</p>
+            <p>More text</p>
+            <p>More text</p>
+            <p>More text</p>
+            <p>More text</p>
+            <p>Finally text</p>
           </div>
         </section>
     </div>
