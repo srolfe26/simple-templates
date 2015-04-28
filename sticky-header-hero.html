@@ -127,7 +127,7 @@
 
 
         /************************ Hero Styles ***********************/
-        .hero::before {
+        .hero:before {
             content:"Hero";
             color:#777;
         }
@@ -205,7 +205,7 @@
             width: 150px;
           }
 
-          .responsive-menu ul + a::after {
+          .responsive-menu ul + a:after {
             font: normal normal normal 14px/1 FontAwesome;
             content: " \f107";
           }
@@ -236,12 +236,13 @@
   </head>
   <body>
     <!--[if lt IE 9]>
-        <link rel="stylesheet" href="assets/css/sticky-header-hero-ie8.css">
+        <p class="browserupgrade">
+          Your browser (Internet Explorer 8) is <strong>Out of Date</strong>.
+          Please <a href="http://browser-update.org.com/update-browser.html">Update your browser</a>
+          for more security, comfort and the best experience on this site.
+        </p>
     <![endif]-->
-    <!--[if lt IE 8]>
-        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
-    
+
     <div class="page-wrap">
         <div class="sticky-alias"></div>
         <header class="site-header sticky-header">
@@ -312,7 +313,8 @@
                   <li>Chrome</li>
                   <li>Firefox</li>
                   <li>Safari</li>
-                  <li>IE 8,9,10,11</li>
+                  <li>IE 9,10,11</li>
+                  <li>IE 8 - LIMITED</li>
                 </ul>
               </li>
               <li>
