@@ -223,16 +223,98 @@
           }
 
           .content {
-            padding: 0;
             max-width: 960px;
             margin: 0 auto;
           }
+
+          /* Counteract the window being resized larger when the menu is open */
+          .page-wrap.menu-open { margin-left:0; }
+          .page-wrap.menu-open .site-header { left:0; }
+          .site-footer.menu-open { margin-left:0; }
         }
     </style>
   </head>
   <body>
     <!--[if lt IE 8]>
         <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <style type="text/css">
+          /* These are a repeat from the media query above since IE8 doesn't support media queries */
+          .menu-toggle { display: none; }
+
+          .slide-holder {
+            background-color: transparent;
+            width:auto;
+            position: static;
+            left:auto;
+            padding: 0.5em;
+          }
+
+          .responsive-menu li {
+            float: left;
+            position: relative;
+          }
+
+          .responsive-menu a {
+            color:#555;
+            display: inline-block;
+            padding: 0.33em 0.5em;
+            border-bottom: 0;
+            text-decoration: none;
+          }
+
+          .responsive-menu ul {
+            display:block;
+            position: absolute;
+            z-index: 21;
+            left:0;
+            top:100%;
+            height:0;
+            overflow: hidden;
+            -webkit-transition: all 0.25s;
+            transition: all 0.25s;
+          }
+
+          .responsive-menu > li:hover > a, 
+          .responsive-menu> li:hover ul {
+            background-color: #eee;
+          }
+
+          .responsive-menu > li:hover ul {
+            height:auto;
+          }
+
+          .responsive-menu ul a {
+            padding: 0.25em 0.5em;
+            width: 150px;
+          }
+
+          .responsive-menu ul + a::after {
+            font: normal normal normal 14px/1 FontAwesome;
+            content: " \f107";
+          }
+
+          .responsive-menu ul a {
+            padding: 0.33em 0.33em 0.33em 1.5em;
+            margin: 0;
+          }
+          .responsive-menu ul a:hover {
+            border-bottom: 1px dashed #333;
+            background-color: #fff;
+          }
+          .responsive-menu ul li:last-child a:hover {
+            border-bottom: 0;
+          }
+
+          .content {
+            max-width: 960px;
+            margin: 0 auto;
+          }
+
+          /* Counteract the window being resized larger when the menu is open */
+          .page-wrap.menu-open { margin-left:0; }
+          .page-wrap.menu-open .site-header { left:0; }
+          .site-footer.menu-open { margin-left:0; }
+        </style>
     <![endif]-->
     <div class="page-wrap">
         <div class="sticky-alias"></div>
@@ -278,14 +360,43 @@
         <section>
           <div class="content">
             <header>
-              <h1>Heading 1</h1>
-              <h2>Heading 2</h2>
-              <h3>Heading 3</h3>
-              <h4>Heading 4</h4>
-              <h5>Heading 5</h5>
-              <h6>Heading 6</h6>
+              <h1>Sticky Header Hero</h1>
             </header>
-            <p>Some text</p>
+
+            <p>
+              The goal of this template is to provide most-basic styling, but complete functionality for a page.
+              That way, a creative has a more advanced boilerplate from which to build their own styles/tempaltes.
+            </p>
+
+            <h2>Features</h2>
+
+            <ul>
+              <li><strong>Sticky Header</strong> - Fixed position header.</li>
+              <li><strong>Sticky Footer</strong> - Not fixed position, but will stick to the bottom of the viewport if page content is short</li>
+              <li><strong>Responsive Menu</strong> - Will collapse in to a left slider menu on viewports smaller than 800px</li>
+              <li><strong>Nested Menu</strong> - Sub-menus are drop-down's on larger screens, indented on the slider menu</li>
+            </ul>
+
+            <h2>Tested</h2>
+
+            <ul>
+              <li>
+                <span>Desktop</span>
+                <ul>
+                  <li>Chrome</li>
+                  <li>Firefox</li>
+                  <li>Safari</li>
+                  <li>IE 8,9,10,11</li>
+                </ul>
+              </li>
+              <li>
+                <span>Mobile</span>
+                <ul>
+                  <li>Chrome</li>
+                  <li>Safari (IOS 8)</li>
+                </ul>
+              </li>
+            </ul>
           </div>
         </section>
     </div>
