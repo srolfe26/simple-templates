@@ -15,6 +15,7 @@
             margin:0;
             padding:0;
             height:100%;
+            overflow-x:hidden;
         }
 
         html * {
@@ -29,7 +30,7 @@
             background-color:#dfdfdf;
         }
 
-        .site-header, .site-footer, .page-wrap, .menu-toggle {
+        .site-header, .site-footer, .page-wrap, .menu-toggle, .slide-holder {
           -webkit-transition: all 0.5s;
           transition: all 0.5s;
         }
@@ -80,11 +81,15 @@
           background-color: #444;
           color:#ddd;
           width:225px;
-          position: absolute;
+          position: fixed;
           top: 0;
           z-index: 2;
           left: -225px;
           padding-bottom: 9999px;
+        }
+
+        .slide-holder.active {
+          left: 0;
         }
 
         .responsive-menu {
@@ -252,7 +257,6 @@
                 
         </section>
 
-        <div class="sticky-alias"></div>
         <div class="site-header sticky-header">
           <a unselectable="on" class="menu-toggle no-select" id="menu-toggle" href="javascript:void(0);">
             <i class="fa fa-bars"></i>
@@ -285,6 +289,7 @@
             </nav>
           </div>
         </div>
+        <div class="sticky-alias"></div>
 
         <section>
           <div class="content">

@@ -13,6 +13,7 @@ $(function(){
     
     $(window).scroll(function(){
         if( $(window).scrollTop() >= stickyHeaderTop ) {
+            alias.height(sticky.outerHeight());
             alias.css('display', 'block');
             sticky.addClass('header-fixed');
         }
