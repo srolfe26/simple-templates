@@ -1,5 +1,19 @@
 /*sticky-header-hero-ie8.css*/
-/* These are a repeat from the media query above since IE8 doesn't support media queries */
+/* These are a repeat from the media query above since 
+IE8 doesn't support media queries */
+html, body {
+  overflow:auto;
+}
+
+.browserupgrade {
+  .background-color: #FAEEBE;
+  border-bottom: 1px solid #ECC36B;
+  position:fixed;
+  width:100%;
+  height:50px;
+  line-height:50px;
+}
+
 .menu-toggle { display: none; }
 
 .slide-holder {
