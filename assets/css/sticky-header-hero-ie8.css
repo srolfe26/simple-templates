@@ -6,12 +6,12 @@ html, body {
 }
 
 .browserupgrade {
-  background-color: #FAEEBE;
+  background: #FAEEBE;
   border-bottom: 1px solid #ECC36B;
   position:fixed;
   width:100%;
-  height:50px;
-  line-height:42px;
+  height:40px;
+  line-height:36px;
 }
 
 .menu-toggle { display: none; }
