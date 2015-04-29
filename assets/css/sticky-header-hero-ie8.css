@@ -1,0 +1,119 @@
+/* sticky-header-hero-ie8.css */
+/* These are a repeat from the media query above since 
+IE8 doesn't support media queries */
+html, body {
+  overflow:auto;
+}
+
+.browser-upgrade {
+  background: #FAEEBE;
+  border-bottom: 1px solid #ECC36B;
+  position: fixed;
+  top:0;
+  left:0;
+  margin:0;
+  padding: 0 0.5em;
+  width: 100%;
+  height: 40px;  
+  z-index:19;
+  line-height: 38px;
+}
+
+.browser-upgrade a {
+  color: #CB3626;
+}
+
+.menu-toggle { display: none; }
+
+.slide-holder {
+  background: transparent;
+  width:auto;
+  position: static;
+  left:auto;
+  padding: 0.5em;
+}
+
+.sticky-alias {
+  display:block;
+  height: 90px;
+}
+
+.sticky-header {
+  position: fixed;
+  z-index:20;
+  width:100%;
+  background: white;
+  color:red;
+  top: 40px;
+  left: 0;
+  height:50px;
+  padding:0.5em;
+}
+
+.responsive-menu li {
+  float: left;
+  position: relative;
+}
+
+.responsive-menu a {
+  color:#555;
+  display: inline-block;
+  padding: 0.33em 0.5em;
+  border-bottom: 0;
+  text-decoration: none;
+}
+
+.hero {
+  height:400px;
+  min-height:0;
+  text-align: center;
+  padding-top: 185px;
+}
+
+.responsive-menu ul {
+  display:block;
+  position: absolute;
+  z-index: 21;
+  left:0;
+  top:100%;
+  height:0;
+  overflow: hidden;
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+}
+
+.responsive-menu > li:hover > a, 
+.responsive-menu> li:hover ul {
+  background: #eee;
+}
+
+.responsive-menu > li:hover ul {
+  height:auto;
+}
+
+.responsive-menu ul a {
+  padding: 0.25em 0.5em;
+  width: 150px;
+}
+
+.responsive-menu ul + a:after {
+  font: normal normal normal 14px/1 FontAwesome;
+  content: " \f107";
+}
+
+.responsive-menu ul a {
+  padding: 0.33em 0.33em 0.33em 1.5em;
+  margin: 0;
+}
+.responsive-menu ul a:hover {
+  border-bottom: 1px dashed #333;
+  background: #fff;
+}
+.responsive-menu ul li:last-child a:hover {
+  border-bottom: 0;
+}
+
+.content {
+  max-width: 960px;
+  margin: 0 auto;
+}

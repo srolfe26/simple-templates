@@ -5,12 +5,11 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>Sticky Header With Hero</title>
-
     <meta name="description" content="This template includes a responsive template with a sticky header and menu">
     <meta name="canonical" content="http://srolfe26.github.io/simple-templates/sticky-header-hero">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- These styles are included here to expedite the initial rendering of the page - Higher Google page load score -->
 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- These styles are included here to expedite the initial rendering of the page -->
     <style type="text/css">
         html, body {
             margin:0;
@@ -31,7 +30,7 @@
             background-color:#dfdfdf;
         }
 
-        .site-header, .site-footer, .page-wrap {
+        .site-header, .site-footer, .page-wrap, .menu-toggle, .slide-holder {
           -webkit-transition: all 0.5s;
           transition: all 0.5s;
         }
@@ -41,6 +40,7 @@
         .page-wrap.menu-open { margin-left:225px; }
         .page-wrap.menu-open .site-header { left:225px; }
         .site-footer.menu-open { margin-left:225px; }
+        .menu-open .menu-toggle { left: 225px; }
 
         .page-wrap {
           min-height: 100%;
@@ -55,13 +55,16 @@
         }
 
         .site-header {
-            position: fixed;
-            z-index:20;
             width:100%;
             background-color: #fff;
-            top: 0;
-            left: 0;
             height:50px;
+        }
+
+        .header-fixed {
+          position: fixed;
+          z-index:20;
+          top: 0;
+          left: 0;
         }
 
         .no-select {
@@ -78,22 +81,16 @@
           background-color: #444;
           color:#ddd;
           width:225px;
-          position: absolute;
+          position: fixed;
           top: 0;
           z-index: 2;
           left: -225px;
           padding-bottom: 9999px;
         }
 
-        .slide-holder {
-          background-color: #444;
-          color:#ddd;
-          width:225px;
-          position: absolute;
-          top: 0;
-          z-index: 2;
-          left: -225px;
-          padding-bottom: 9999px;        }
+        .slide-holder.active {
+          left: 0;
+        }
 
         .responsive-menu {
           list-style: none;
@@ -111,7 +108,7 @@
         }
 
         .responsive-menu a {
-          color:#ccc;
+          color:#ddd;
           display: block;
           padding: 0.33em 0.5em;
           border-bottom:1px solid #555;
@@ -125,22 +122,24 @@
         .menu-toggle {
           line-height: 55px;
           text-decoration: none;
-          color: #333;
           padding:0 1em;
+          position: fixed;
+          top: 0;
+          left: 0;
+          color: #fff;
+          z-index: 21;
+          text-shadow: 0 0 3px #000;
         }
 
-        .site-footer {
-            background-color: #333;
-            color:#ddd;
-            width:100%;
-            padding:0.5em 1em;
+        .header-fixed .menu-toggle { 
+          color:#333; 
+          text-shadow: 0 0 3px #eee;
         }
-
 
         /************************ Hero Styles ***********************/
-        .hero:before {
+        .hero::before {
             content:"Hero";
-            color:#777;
+            color:#fff;
         }
         .hero {
             width:100%;
@@ -166,7 +165,15 @@
           height: 100px; 
         }
 
-        @media only screen and (min-width: 800px){ 
+        .site-footer {
+            background-color: #333;
+            color:#ddd;
+            width:100%;
+            padding:0.5em 1em;
+        }
+
+        /************************ Non-Mobile ************************/
+        @media only screen and (min-width: 1000px){ 
           .menu-toggle { display: none; }
 
           .slide-holder {
@@ -216,7 +223,7 @@
             width: 150px;
           }
 
-          .responsive-menu ul + a:after {
+          .responsive-menu ul + a::after {
             font: normal normal normal 14px/1 FontAwesome;
             content: " \f107";
           }
@@ -234,154 +241,87 @@
           }
 
           .content {
+            padding: 0;
             max-width: 960px;
             margin: 0 auto;
           }
-
-          /* Counteract the window being resized larger when the menu is open */
-          .page-wrap.menu-open { margin-left:0; }
-          .page-wrap.menu-open .site-header { left:0; }
-          .site-footer.menu-open { margin-left:0; }
         }
     </style>
   </head>
   <body>
-    <!--[if lt IE 9]>
-        <p class="browser-upgrade">
-          Your browser (Internet Explorer 8) is <strong>Out of Date</strong>.
-          Please <a href="http://browser-update.org/update-browser.html">Update your browser</a>
-          for more security, comfort and the best experience on this site.
-        </p>
+    <!--[if lt IE 8]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
     <div class="page-wrap">
-        <div class="sticky-alias"></div>
-        <header class="site-header sticky-header">
-          <a class="menu-toggle" id="menu-toggle" href="javascript:void(0);">Menu</a>
-          <nav class="slide-holder">
-            <ul class="responsive-menu">
-              <li>Menu 1</li>
-              <li>Menu 2</li>
-              <li>Menu 3</li>
-              <li>Menu 4</li>
-              <li>Menu 5</li>
-            </ul>
-          </nav>
-        </header>
-
-    <div class="page-wrap">
-        <div class="sticky-alias"></div>
-        <!-- IE8 Note: HTML 5 tags (header, section, footer, etc..) cannot have styles applied to them. Furthermore,
-            the element's children will be moved to be sibling selectors. It's weird as it gets! -->
-        <header>
-          <div class="site-header sticky-header">
-            <a unselectable="on" class="menu-toggle no-select" id="menu-toggle" href="javascript:void(0);">
-              <i class="fa fa-bars"></i>
-              Menu
-            </a>
-
-            <div class="content">
-              <nav class="slide-holder">
-                <ul class="responsive-menu">
-                  <li>
-                    <a href="#">Menu 1</a>
-                  </li>
-                  <li>
-                    <ul>
-                      <li><a href="#">Sub 1</a></li>
-                      <li><a href="#">Sub 2</a></li>
-                    </ul>
-                    <a href="#">Menu 2</a>
-                  </li>
-                  <li>
-                    <a href="#">Menu 3</a>
-                  </li>
-                  <li>
-                    <a href="#">Menu 4</a>
-                  </li>
-                  <li>
-                    <a href="#">Menu 5</a>
-                  </li>
-                </ul>
-              </nav>
-            </div>
-          </div>
-        </header>
-
-        <section>
-            <div class="hero">
+        <section class="hero">
                 
-            </div>
         </section>
+
+        <div class="site-header sticky-header">
+          <a unselectable="on" class="menu-toggle no-select" id="menu-toggle" href="javascript:void(0);">
+            <i class="fa fa-bars"></i>
+            Menu
+          </a>
+
+          <div class="content">
+            <nav class="slide-holder">
+              <ul class="responsive-menu">
+                <li>
+                  <a href="#">Menu 1</a>
+                </li>
+                <li>
+                  <ul>
+                    <li><a href="#">Sub 1</a></li>
+                    <li><a href="#">Sub 2</a></li>
+                  </ul>
+                  <a href="#">Menu 2</a>
+                </li>
+                <li>
+                  <a href="#">Menu 3</a>
+                </li>
+                <li>
+                  <a href="#">Menu 4</a>
+                </li>
+                <li>
+                  <a href="#">Menu 5</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+        <div class="sticky-alias"></div>
 
         <section>
           <div class="content">
             <header>
-              <h1>Sticky Header Hero</h1>
+              <h1>Heading 1</h1>
+              <h2>Heading 2</h2>
+              <h3>Heading 3</h3>
+              <h4>Heading 4</h4>
+              <h5>Heading 5</h5>
+              <h6>Heading 6</h6>
             </header>
-
-            <p>
-              The goal of this template is to provide most-basic styling, but complete functionality for a page.
-              That way, a creative has a more advanced boilerplate from which to build their own styles/tempaltes.
-            </p>
-
-            <h2>Features</h2>
-
-            <ul>
-              <li><strong>Sticky Header</strong> - Fixed position header.</li>
-              <li><strong>Sticky Footer</strong> - Not fixed position, but will stick to the bottom of the viewport if page content is short</li>
-              <li><strong>Responsive Menu</strong> - Will collapse in to a left slider menu on viewports smaller than 800px</li>
-              <li><strong>Nested Menu</strong> - Sub-menus are drop-down's on larger screens, indented on the slider menu</li>
-            </ul>
-
-            <h2>Tested</h2>
-
-            <ul>
-              <li>
-                <span>Desktop</span>
-                <ul>
-                  <li>Chrome</li>
-                  <li>Firefox</li>
-                  <li>Safari</li>
-                  <li>IE 9,10,11</li>
-                  <li>IE 8 - Shows an upgrade message</li>
-                </ul>
-              </li>
-              <li>
-                <span>Mobile</span>
-                <ul>
-                  <li>Chrome</li>
-                  <li>Safari (IOS 8)</li>
-                </ul>
-              </li>
-            </ul>
+            <p>Some text</p>
+            <p>More text</p>
+            <p>More text</p>
+            <p>More text</p>
+            <p>More text</p>
+            <p>Finally text</p>
           </div>
         </section>
     </div>
-    <footer>
-      <div class="site-footer">
+    <footer class="site-footer">
         <div class="content">
             <p>Footer</p>
-        </div> 
-      </div>
+          </div>
     </footer>
 
     <link rel="stylesheet" href="assets/css/normalize.min.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/main.css">
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-
-    <!--[if lt IE 9]>
-    <link rel="stylesheet" href="assets/css/sticky-header-hero-ie8.css?_=3223">
-    <script>
-        // This code causes IE8 to redraw the pseudo-elements which allows the font-awesome icons to render correctly
-        $(document).ready(function(){
-            var styl;
-            $('head').append(styl = $('<style>',{type:'text/css'}).text(':before,:after{content:none !important'));
-            setTimeout(function(){ styl.remove(); }, 0);
-        });
-    </script>
-    <![endif]-->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
 
     <script src="assets/js/main.js"></script>
 
