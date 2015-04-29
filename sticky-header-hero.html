@@ -5,11 +5,11 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>Sticky Header With Hero</title>
-    <meta name="description" content="This template includes a responsive tempalte with a sticky header and menu">
+    <meta name="description" content="This template includes a responsive template with a sticky header and menu">
     <meta name="canonical" content="http://srolfe26.github.io/simple-templates/sticky-header-hero">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- These styles are included here to expedite the initial rendering of the page -->
+    <!-- These styles are included here to expedite the initial rendering of the page - Higher Google page load score -->
     <style type="text/css">
         html, body {
             margin:0;
@@ -236,53 +236,56 @@
   </head>
   <body>
     <!--[if lt IE 9]>
-        <link rel="stylesheet" href="assets/css/sticky-header-hero-ie8.css?_=18">
-        <p class="browserupgrade">
+        <p class="browser-upgrade">
           Your browser (Internet Explorer 8) is <strong>Out of Date</strong>.
-          Please <a href="http://browser-update.org.com/update-browser.html">Update your browser</a>
+          Please <a href="http://browser-update.org/update-browser.html">Update your browser</a>
           for more security, comfort and the best experience on this site.
         </p>
     <![endif]-->
 
     <div class="page-wrap">
         <div class="sticky-alias"></div>
-        <header class="site-header sticky-header">
-          <a unselectable="on" class="menu-toggle no-select" id="menu-toggle" href="javascript:void(0);">
-            <i class="fa fa-bars"></i>
-            Menu
-          </a>
+        <!-- IE8 Note: HTML 5 tags (header, section, footer, etc..) cannot have styles applied to them. Furthermore,
+            the element's children will be moved to be sibling selectors. It's weird as it gets! -->
+        <header>
+          <div class="site-header sticky-header">
+            <a unselectable="on" class="menu-toggle no-select" id="menu-toggle" href="javascript:void(0);">
+              <i class="fa fa-bars"></i>
+              Menu
+            </a>
 
-          <div class="content">
-            <nav class="slide-holder">
-              <ul class="responsive-menu">
-                <li>
-                  <a href="#">Menu 1</a>
-                </li>
-                <li>
-                  <ul>
-                    <li><a href="#">Sub 1</a></li>
-                    <li><a href="#">Sub 2</a></li>
-                  </ul>
-                  <a href="#">Menu 2</a>
-                </li>
-                <li>
-                  <a href="#">Menu 3</a>
-                </li>
-                <li>
-                  <a href="#">Menu 4</a>
-                </li>
-                <li>
-                  <a href="#">Menu 5</a>
-                </li>
-              </ul>
-            </nav>
+            <div class="content">
+              <nav class="slide-holder">
+                <ul class="responsive-menu">
+                  <li>
+                    <a href="#">Menu 1</a>
+                  </li>
+                  <li>
+                    <ul>
+                      <li><a href="#">Sub 1</a></li>
+                      <li><a href="#">Sub 2</a></li>
+                    </ul>
+                    <a href="#">Menu 2</a>
+                  </li>
+                  <li>
+                    <a href="#">Menu 3</a>
+                  </li>
+                  <li>
+                    <a href="#">Menu 4</a>
+                  </li>
+                  <li>
+                    <a href="#">Menu 5</a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
           </div>
         </header>
 
-        <section class="page-content">
-            <section class="hero">
+        <section>
+            <div class="hero">
                 
-            </section>
+            </div>
         </section>
 
         <section>
@@ -329,18 +332,31 @@
           </div>
         </section>
     </div>
-    <footer class="site-footer">
+    <footer>
+      <div class="site-footer">
         <div class="content">
             <p>Footer</p>
-          </div>
+        </div> 
+      </div>
     </footer>
 
     <link rel="stylesheet" href="assets/css/normalize.min.css">
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/main.css">
 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+    <!--[if lt IE 9]>
+    <link rel="stylesheet" href="assets/css/sticky-header-hero-ie8.css?_=3223">
+    <script>
+        // This code causes IE8 to redraw the pseudo-elements which allows the font-awesome icons to render correctly
+        $(document).ready(function(){
+            var styl;
+            $('head').append(styl = $('<style>',{type:'text/css'}).text(':before,:after{content:none !important'));
+            setTimeout(function(){ styl.remove(); }, 0);
+        });
+    </script>
+    <![endif]-->
 
     <script src="assets/js/main.js"></script>
 
