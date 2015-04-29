@@ -237,7 +237,7 @@
   <body>
     <!--[if lt IE 9]>
         <script type="application/javascript">
-          var cb = (new Date()).valueOf();
+          var cb = moment().toDate().getTime();
           document.writeln('<link rel="stylesheet" href="assets/css/sticky-header-hero-ie8.css?_' +cb+ '">');
         </script>
         <p class="browserupgrade">
