@@ -236,7 +236,10 @@
   </head>
   <body>
     <!--[if lt IE 9]>
-        <link rel="stylesheet" href="assets/css/sticky-header-hero-ie8.css">
+        <script type="application/javascript">
+          var cb = (new Date()).valueOf();
+          document.write('<link rel="stylesheet" href="assets/css/sticky-header-hero-ie8.css?_' +cb+ '">');
+        </script>
         <p class="browserupgrade">
           Your browser (Internet Explorer 8) is <strong>Out of Date</strong>.
           Please <a href="http://browser-update.org.com/update-browser.html">Update your browser</a>
